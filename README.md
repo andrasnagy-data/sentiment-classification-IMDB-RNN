@@ -7,7 +7,7 @@ The best point to stop the training is after the 17th epoch (lowest testing erro
 
 ![image](training_evaluation.png)
 
-Below you can see the (over-fitted) model's description of 2 reviews.
+Below one can see the (over-fitted) model's prediction of 2 reviews.
 1 positive and 1 negative. The reviews were taken from the internet, as to simulate the real-world (unseen data).
 
 ![image](predictions.png)

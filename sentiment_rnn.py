@@ -124,18 +124,16 @@ class RNN(nn.Module):
         self.n_layers = n_layers
         self.device = device
 
-        # embedding
-        self.encoder = nn.Embedding.from_pretrained(embedded_vectors)
         # architecture
+        self.encoder = nn.Embedding.from_pretrained(embedded_vectors)
         self.rnn = nn.GRU(
             self.embededd_vectors.shape[1], 
             hidden_size, 
             num_layers = n_layers, 
-        
             batch_first= True)
         self.decoder = nn.Linear(hidden_size, 1)
 
-    # initialize tensor with random values
+    # initialize first hidden state with random values
     def _init_hidden(self):
         return torch.randn(
             self.n_layers, self.batch_size, self.hidden_size).to(self.device)
@@ -248,9 +246,9 @@ def predict_sentiment(review):
         prediction = torch.sigmoid(y_).item()
 
         if prediction > 0.5:
-            print(f'{prediction:0.3}: Positive sentiment')
+            print(f'{prediction:0.4}: Positive sentiment')
         else:
-            print(f'{prediction:0.3}: Negative sentiment')
+            print(f'{prediction:0.4}: Negative sentiment')
 
 
 pos_review = """
@@ -276,12 +274,9 @@ Everything stinks so very gaggingly. A rhesus monkey with a camcorder poking
 out of its arse would do better. Beware, my friends, beware of this 
 abomination that is Birdemic."""
 
-pos_review2 = 'Amazing movie, loved it.'
-neg_review2 = """Most boring movie I ever watched, the acting was terrible, 
-the only thing that is worse is the screenplay."""
 
 # check sentiment of reviews
+print(f"{pos_review} \n")
 print(predict_sentiment(pos_review))
+print(f"{neg_review} \n")
 print(predict_sentiment(neg_review))
-print(predict_sentiment(pos_review2))
-print(predict_sentiment(neg_review2))

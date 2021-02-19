@@ -1,9 +1,13 @@
-### Sentiment Classification with RNN (many-to-one) architecture, GloVe 50-d embedding layer
+### Sentiment Classification with RNN architecture, GloVe 50-d embedding layer
 
-This project is a follow-up of the "simpler" approach in the [sentiment-classification-IMDB](https://github.com/andrasnagy-data/sentiment-classification-IMDB).
-The words are represented in continuous space, and the architecture is based on pytorch's GRU. (Reasons: addresses the "vanishing gradient problem, faster to train, than LSTM))
+This project is a follow-up of the "simpler" approach in the other repository.
+The words are represented in continuous space, and the architecture is based on pytorch's GRU (faster to train, than other RNNs)
 
-The best point to stop the training is after the 20th epoch (lowest testing error).From that point, the testing loss stops decreasing.
+The best point to stop the training is after the 17th epoch (lowest testing error).From that point, the testing loss stops decreasing.
 
 ![image](training_evaluation.png)
 
+Below you can see the (over-fitted) model's description of 2 reviews.
+1 positive and 1 negative. The reviews were taken from the internet, as to simulate the real-world (unseen data).
+
+![image](predictions.png)
